@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const vagasRoutes = require("./src/routes/vagasRoutes");
+const materiaisRoutes = require("./src/routes/materialRoutes");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 
 // ROTAS PROTEGIDAS
 app.use("/vagas", vagasRoutes);
+app.use("/materiais", materiaisRoutes);
 
 
 app.listen(8000, () => {
