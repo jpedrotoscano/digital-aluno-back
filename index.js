@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const vagasRoutes = require("./src/routes/vagasRoutes");
+const desafiosRoutes = require("./src/routes/desafiosRoutes")
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 
 // ROTAS PROTEGIDAS
 app.use("/vagas", vagasRoutes);
+app.use("/desafios", desafiosRoutes)
 
 
 app.listen(8000, () => {
