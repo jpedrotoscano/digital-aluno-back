@@ -16,16 +16,26 @@ async function criarDesafio(dados) {
             throw new Error("O campo desafio é obrigatório")
         }
 
+        if(!dados.desafio_stack || dados.desafio_stack == "") {
+            throw new Error("O campo desafio_stack é obrigatório")
+        }
+
+        if(!dados.desafio_dificuldade || dados.desafio_dificuldade == "") {
+            throw new error("O campo desafio_dificuldade é obrigatório")
+        }
+
         if(!dados.curso_id || dados.curso_id == "") {
             throw new Error("O campo curso_id é obrigatório")
         }
 
         const result = await executarSQL(`
-            INSERT INTO desafios (desafio_titulo, desafio_descricao, desafio, curso_id, criado_em)
+            INSERT INTO desafios (desafio_titulo, desafio_descricao, desafio, desafio_stack, desafio_dificuldade curso_id, criado_em)
             VALUES (
                 "${dados.desafio_titulo}",
                 "${dados.desafio_descricao}", 
-                "${dados.desafio}", 
+                "${dados.desafio}",
+                "${dados.desafio_stack}",
+                "${dados.desafio_dificuldade}",
                 "${dados.curso_id}", 
                 "${date}"
             );
@@ -100,6 +110,14 @@ async function editarDesafio(id, dados) {
             throw new Error("O campo desafio é obrigatório")            
         }
 
+        if(!dados.desafio_stack || dados.desafio_stack == "") {
+            throw new Error("O campo desafio_stack é obrigatório")
+        }
+
+        if(!dados.desafio_dificuldade || dados.desafio_dificuldade == "") {
+            throw new error("O campo desafio_dificuldade é obrigatório")
+        }
+
         if(!dados.curso_id || dados.curso_id == "") {
             throw new Error("O campo curso_id é obrigatório")
         }
@@ -110,6 +128,8 @@ async function editarDesafio(id, dados) {
                 desafio_titulo = ${dados.desafio_titulo}, 
                 desafio_descricao = ${dados.desafio_descricao}, 
                 desafio = ${dados.desafio},
+                desafio_stack = ${dados.desafio_stack},
+                desafio_dificuldade = ${dados.desafio_dificuldade},
                 curso_id = ${dados.curso_id},
                 atualizado_em = ${date}
             WHERE curso_id = ${id};
