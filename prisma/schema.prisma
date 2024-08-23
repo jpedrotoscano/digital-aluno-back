@@ -8,61 +8,60 @@ datasource db {
 }
 
 model cursos {
-  curso_id        Int        @id @default(autoincrement())
-  curso_nome      String     
-  curso_descricao String     
-  criado_em       DateTime?  @default(now()) 
-  atualizado_em   DateTime   @default(now()) 
-  curso_duracao   String     
-  curso_desafios  desafios[]
+  curso_id        Int       @id @default(autoincrement())
+  curso_nome      String
+  curso_descricao String
+  criado_em       DateTime? @default(now())
+  atualizado_em   DateTime  @default(now())
+  curso_duracao   String
 }
 
 model materiais {
   material_id   Int      @id @default(autoincrement())
-  material_nome String   
-  material_link String   
+  material_nome String
+  material_link String
   curso_id      Int
-  criado_em     DateTime @default(now()) 
-  atualizado_em DateTime @default(now()) 
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @default(now())
 }
 
 model tarefas {
   tarefa_id        Int     @id @default(autoincrement())
-  tarefa_titulo    String  
-  tarefa_descricao String? 
+  tarefa_titulo    String
+  tarefa_descricao String?
   tarefa_status    Int     @default(1)
 }
 
 model usuarios {
   usuario_id    Int    @id @default(autoincrement())
-  usuario_email String 
-  usuario_senha String 
+  usuario_email String
+  usuario_senha String
 }
 
 model vagas {
   vaga_id       Int      @id @default(autoincrement())
-  vaga_titulo   String   
-  vaga_imagem   String  
-  vaga_link     String   
-  criado_em     DateTime @default(now()) 
-  atualizado_em DateTime @default(now()) 
+  vaga_titulo   String
+  vaga_imagem   String
+  vaga_link     String
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @default(now())
 }
 
 model desafios {
   desafio_id        Int      @id @default(autoincrement())
-  desafio_titulo    String   
-  desafio_stack     String   
-  desafio_nivel     String   
-  desafio_descricao String   
-  desafio_link      String   
+  desafio_titulo    String
+  desafio_stack     String
+  desafio_nivel     String
+  desafio_descricao String
+  desafio_link      String
   criado_em         DateTime @default(now())
   atualizado_em     DateTime @default(now())
-  curso             cursos   @relation(fields: [desafio_id], references: [curso_id])
 }
 
 model reposicao {
-  reposicao_id    Int      @id @default(autoincrement())
-  reposicao_curso String   
-  reposicao_data  String   
-  criado_em       DateTime @default(now())
+  reposicao_id     Int      @id @default(autoincrement())
+  reposicao_curso  String
+  reposicao_data   String
+  reposicao_topico String
+  criado_em        DateTime @default(now())
 }
