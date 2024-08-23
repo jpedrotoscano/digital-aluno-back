@@ -8,13 +8,12 @@ datasource db {
 }
 
 model cursos {
-  curso_id        Int        @id @default(autoincrement())
-  curso_nome      String     @db.VarChar(100)
-  curso_descricao String     @db.Text
-  criado_em       DateTime?  @default(now()) @db.DateTime(0)
-  atualizado_em   DateTime   @default(now()) @db.DateTime(0)
-  curso_duracao   String     @db.VarChar(20)
-  curso_desafios  desafios[]
+  curso_id        Int       @id @default(autoincrement())
+  curso_nome      String    @db.VarChar(100)
+  curso_descricao String    @db.Text
+  criado_em       DateTime? @default(now()) @db.DateTime(0)
+  atualizado_em   DateTime  @default(now()) @db.DateTime(0)
+  curso_duracao   String    @db.VarChar(20)
 }
 
 model materiais {
@@ -57,12 +56,12 @@ model desafios {
   desafio_link      String   @db.VarChar(255)
   criado_em         DateTime @default(now()) @db.DateTime(0)
   atualizado_em     DateTime @default(now()) @db.DateTime(0)
-  curso             cursos   @relation(fields: [desafio_id], references: [curso_id])
 }
 
 model reposicao {
-  reposicao_id    Int      @id @default(autoincrement())
-  reposicao_curso String   @db.VarChar(100)
-  reposicao_data  String   @db.VarChar(100)
-  criado_em       DateTime @default(now()) @db.DateTime(0)
+  reposicao_id     Int      @id @default(autoincrement())
+  reposicao_curso  String   @db.VarChar(100)
+  reposicao_data   String   @db.VarChar(100)
+  reposicao_topico String   @db.VarChar(255)
+  criado_em        DateTime @default(now()) @db.DateTime(0)
 }

@@ -58,7 +58,7 @@ async function editarDesafio(id, dados) {
     try {
         return await prisma.desafios.update({
             where: {
-                desafio_Id: Number(id)
+                desafio_id: Number(id)
             },
             data: dados
         })
