@@ -59,3 +59,10 @@ model desafios {
   atualizado_em     DateTime @default(now()) @db.DateTime(0)
   curso             cursos   @relation(fields: [desafio_id], references: [curso_id])
 }
+
+model reposicao {
+  reposicao_id    Int      @id @default(autoincrement())
+  reposicao_curso String   @db.VarChar(100)
+  reposicao_data  String   @db.VarChar(100)
+  criado_em       DateTime @default(now()) @db.DateTime(0)
+}
