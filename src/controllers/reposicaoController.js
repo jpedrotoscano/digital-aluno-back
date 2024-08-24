@@ -2,7 +2,7 @@ const { prisma } = require("../database")
 
 async function criarReposicao(dados) {
     try {
-        return await prisma.reposicao.create({
+        return await prisma.reposicoes.create({
             data: dados
         })
     } catch (error) {
@@ -15,7 +15,7 @@ async function criarReposicao(dados) {
 
 async function listarReposicoes() {
     try {
-        return await prisma.reposicao.findMany()
+        return await prisma.reposicoes.findMany()
     } catch (error) {
         return {
             message: error.message,
@@ -26,7 +26,7 @@ async function listarReposicoes() {
 
 async function listarReposicao(id) {
     try {
-        return await prisma.reposicao.findUnique({
+        return await prisma.reposicoes.findUnique({
             where: {
                 reposicao_id: Number(id)
             }
@@ -41,7 +41,7 @@ async function listarReposicao(id) {
 
 async function editarReposicao(id, dados) {
     try {
-        return await prisma.reposicao.update({
+        return await prisma.reposicoes.update({
             where: {
                 reposicao_id: Number(id)
             },
@@ -57,7 +57,7 @@ async function editarReposicao(id, dados) {
 
 async function deletarReposicao(id) {
     try {
-        return await prisma.reposicao.delete({
+        return await prisma.reposicoes.delete({
             where: {
                 reposicao_id: Number(id)
             }

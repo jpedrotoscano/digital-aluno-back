@@ -83,7 +83,7 @@ model reposicoes {
   reposicao_topico String   @db.VarChar(255)
   criado_em        DateTime @default(now()) @db.DateTime(0)
   usuario_id       Int
-  usuarios         usuarios @relation(fields: [usuario_id], references: [usuario_id])
+  usuario          usuarios @relation(fields: [usuario_id], references: [usuario_id])
 
-  @@index([usuario_id], map: "reposicao_usuario_id_fkey")
+  @@index([usuario_id], map: "reposicoes_usuario_id_fkey")
 }
